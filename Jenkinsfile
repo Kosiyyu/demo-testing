@@ -1,9 +1,9 @@
 pipeline {
   agent any
   stages {
-    stage('') {
+    stage('error') {
       steps {
-        sh 'docker pull hello-world'
+        sh 'docker volume list'
       }
     }
 
