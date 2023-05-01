@@ -1,0 +1,10 @@
+FROM alpine:latest
+
+RUN apk add maven
+
+WORKDIR /app
+COPY demo-testing /app/demo-testing
+
+VOLUME /in
+
+CMD cd /app/demo-testing/test && mvn clean install && cd ../.. && cp -r demo-testing /in/
