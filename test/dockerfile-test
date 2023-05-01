@@ -1,0 +1,15 @@
+FROM alpine:latest
+
+RUN apk add maven
+
+WORKDIR /app
+
+COPY demo-testing /in/demo-testing
+
+VOLUME /in
+VOLUME /out
+
+RUN cd /in/demo-testing/test && \
+ echo "pwd: $(pwd), ls $(ls)"
+
+CMD cd /in/demo-testing/test && mvn test && cd ../.. && cp -r demo-testing /out/
