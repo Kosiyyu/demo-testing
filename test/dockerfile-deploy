@@ -7,6 +7,6 @@ WORKDIR /app
 RUN git clone https://github.com/Kosiyyu/demo-testing.git
 
 RUN cd demo-testing/test && \
-    mvn packag
+    mvn package
 
 CMD mv /app/demo-testing/test/target/test-1.0-SNAPSHOT.jar /app/demo-testing/test/target/app-$(date '+%Y-%m-%d-%H-%M-%S').jar
