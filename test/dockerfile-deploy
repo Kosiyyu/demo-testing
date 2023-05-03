@@ -1,14 +1,13 @@
-FROM alpine:latest
+FROM maven:3.8.3-jdk-17
 
-RUN apk --no-cache add git maven
-
-RUN git clone https://github.com/Kosiyyu/demo-testing.git /app
+RUN apt-get update && apt-get install -y git
 
 WORKDIR /app
 
-RUN ls && \
-    pwd && \
-    cd test && \
-    mvn package
+RUN git clone https://github.com/Kosiyyu/demo-testing.git
 
-CMD ["java", "-jar", "test/target/*.jar"]
+WORKDIR /app/demo-testing/test
+
+RUN mvn package
+
+CMD ["java", "-jar", "/app/demo-testing/test/target/*.jar"]
