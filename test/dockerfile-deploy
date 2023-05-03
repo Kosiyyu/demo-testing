@@ -13,4 +13,4 @@ RUN cd demo-testing/test/target && \
     pwd && \ 
     ls
 
-CMD ["java", "-jar", "/app/demo-testing/test/target/*.jar"]
+CMD ["java", "-jar", "/app/demo-testing/test/target/test-1.0-SNAPSHOT.jar"]
