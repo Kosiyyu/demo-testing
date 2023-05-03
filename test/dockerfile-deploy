@@ -6,7 +6,7 @@ WORKDIR /app
 
 RUN git clone https://github.com/Kosiyyu/demo-testing.git
 
-RUN cd demo-testing/test
+RUN cd demo-testing/test && \
     pwd && \ 
     ls && \ 
     mvn package
