@@ -1,6 +1,6 @@
-FROM alpine:latest
+FROM openjdk:17-jdk-alpine
 
-RUN apk --no-cache add git maven java-17
+RUN apk --no-cache add git maven
 
 WORKDIR /app
 
