@@ -8,7 +8,7 @@ WORKDIR /app
 
 RUN ls && \
     pwd && \
-    cd demo-testing/test && \
+    cd test && \
     mvn package
 
 CMD ["java", "-jar", "demo-testing/test/target/*.jar"]
