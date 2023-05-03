@@ -1,4 +1,12 @@
-FROM openjdk:17-jdk-slim
+FROM openjdk:17-jdk-alpine
+
+RUN apk --no-cache add git maven
+
+RUN git clone https://github.com/Kosiyyu/demo-testing.git /app
+
 WORKDIR /app
-COPY target/app.jar app.jar
-CMD ["java", "--enable-preview", "-jar", "app.jar"]
+
+RUN cd demo-testing/test && \
+    mvn package
+
+CMD ["java", "-jar", "demo-testing/test/target/*.jar"]
