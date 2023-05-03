@@ -7,8 +7,9 @@ WORKDIR /app
 RUN git clone https://github.com/Kosiyyu/demo-testing.git
 
 RUN cd demo-testing/test && \
-    mvn package && \ 
-    pwd && \ 
-    ls && \ 
+    mvn packag
+    
+RUN     pwd && \ 
+    ls
 
 CMD ["java", "-jar", "/app/demo-testing/test/target/*.jar"]
