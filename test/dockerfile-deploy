@@ -7,11 +7,6 @@ WORKDIR /app
 RUN git clone https://github.com/Kosiyyu/demo-testing.git
 
 RUN cd demo-testing/test && \
-    mvn package && \
-    sed -i 's/^M//g' /app/demo-testing/test/target/test-1.0-SNAPSHOT.jar && \
-    jar xf /app/demo-testing/test/target/test-1.0-SNAPSHOT.jar META-INF/MANIFEST.MF && \
-    sed -i '1s/.*/Main-Class: com.example.Main/' META-INF/MANIFEST.MF && \
-    jar cfm /app/demo-testing/test/target/test-1.0-SNAPSHOT.jar META-INF/MANIFEST.MF -C /app/demo-testing/test/target/classes/ .
+    mvn package
 
-CMD ["java", "-jar", "/app/demo-testing/test/target/test-1.0-SNAPSHOT.jar"]
-
+CMD mv /app/demo-testing/test/target/test-1.0-SNAPSHOT.jar /app/demo-testing/test/target/app-$(date '+%Y-%m-%d-%H-%M-%S').jar
