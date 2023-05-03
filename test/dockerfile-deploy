@@ -11,4 +11,4 @@ RUN ls && \
     cd test && \
     mvn package
 
-CMD ["java", "-jar", "demo-testing/test/target/*.jar"]
+CMD ["java", "-jar", "test/target/*.jar"]
