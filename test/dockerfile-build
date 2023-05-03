@@ -1,10 +1,12 @@
-FROM alpine:latest
+FROM openjdk:17-jdk-alpine
 
-RUN apk add maven
+RUN apk --no-cache add git maven
+
+RUN git clone https://github.com/Kosiyyu/demo-testing.git /app
 
 WORKDIR /app
-COPY demo-testing /app/demo-testing
 
-VOLUME /in
+RUN cd demo-testing/test && \
+    mvn package
 
-CMD cd /app/demo-testing/test && mvn clean install && cd ../.. && cp -r demo-testing /in/
+CMD ["java", "-jar", "demo-testing/test/target/myapp.jar"]
