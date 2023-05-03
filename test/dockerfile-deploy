@@ -2,11 +2,13 @@ FROM alpine:latest
 
 RUN apk --no-cache add git maven
 
+WORKDIR /app
+
 RUN git clone https://github.com/Kosiyyu/demo-testing.git
 
-WORKDIR /app/demo-testing/test
-
-RUN pwd && \
-mvn package
+RUN cd demo-testing/test
+    pwd && \ 
+    ls && \ 
+    mvn package
 
 CMD ["java", "-jar", "/app/demo-testing/test/target/*.jar"]
